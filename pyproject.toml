@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stripe-recovery-core"
+version = "0.1.0"
+description = "Embeddable erasure-coded striping kernel: verified object content over caller-provided async storage"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "stripe-recovery-core developers" }]
+keywords = ["erasure-coding", "reed-solomon", "striping", "integrity", "async"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Archiving",
+]
+
+# The kernel has no hard runtime dependencies. Erasure math is provided by the
+# built-in pure-Python Cauchy Reed-Solomon codec; a faster codec (e.g. zfec
+# bindings) can be injected via StripeKernel(..., codec=...).
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+stripe_recovery_core = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
