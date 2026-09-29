@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stripe-recovery-core"
+version = "0.1.0"
+description = "Embeddable, integrity-verified erasure-coded stripe kernel with async storage, streaming range reads and cancellable repair"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "stripe-recovery-core contributors" }]
+dependencies = [
+    "zfec>=1.5",
+]
+
+[project.optional-dependencies]
+test = []
+
+[tool.setuptools.packages.find]
+include = ["stripe_recovery_core*"]
+
+[tool.setuptools.package-data]
+stripe_recovery_core = ["py.typed"]
